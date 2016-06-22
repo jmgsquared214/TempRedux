@@ -10,6 +10,7 @@ class SearchBar extends Component {
     this.state = { term: '' };
 
     this.onInputChange = this.onInputChange.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
 }
   onInputChange(event) {
   //console.log(event.target.value);
@@ -18,7 +19,11 @@ class SearchBar extends Component {
 
   onFormSubmit(event) {
     event.preventDefault();
-  }
+
+    this.props.fetchWeather(this.state.term);
+    this.setState({ term: ''});
+
+    }
   render() {
     return (
       <form onSubmit={this.onFormSubmit} className="input-group">
@@ -35,8 +40,7 @@ class SearchBar extends Component {
   }
 }
 
-
-function mapDispatchToProps(dipatch) {
+function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchWeather }, dispatch);
 }
 
