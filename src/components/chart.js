@@ -9,5 +9,5 @@ export default (props) => {
       <SparklinesReferenceLines type="avg" />
       </Sparklines>
       </div>
-  );
+  )
 };
